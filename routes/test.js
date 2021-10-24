@@ -14,7 +14,7 @@ var connection = mysql.createConnection(config);
 
 router.get('/', function(req, res, next) {
 
-    res.send('test ok')
+    res.send('fuck LiSir')
 
     //解析请求参数
     // var params = URL.parse(req.url, true).query;
