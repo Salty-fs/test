@@ -36,7 +36,7 @@ router.get('/', function(req, res, next) {
         //把搜索值输出
       //  res.send(result);
        res.status = 200;
-       res.json
+       res.json(result)
     });
 
 });
