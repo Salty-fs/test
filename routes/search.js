@@ -37,6 +37,7 @@ router.get('/', function(req, res, next) {
       //  res.send(result);
        res.status = 200;
        res.json(result)
+       console.log(result)
     });
 
 });
