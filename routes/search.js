@@ -34,8 +34,11 @@ router.get('/', function(req, res, next) {
         console.log(params.id);
         
         //把搜索值输出
-       res.send(result);
+      //  res.send(result);
+       res.status = 200;
+       res.json
     });
+
 });
 
 module.exports = router;
