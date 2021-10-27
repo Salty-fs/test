@@ -31,13 +31,14 @@ router.get('/', function(req, res, next) {
           console.log('[SELECT ERROR] - ',err.message);
           return;
         }
-        console.log(params.id);
+        // console.log(params.id);
         
         //把搜索值输出
       //  res.send(result);
        res.status = 200;
-       res.json(result)
-       console.log(result)
+      //  res.json(result)
+      //  console.log(res.json)
+       res.send(result)
     });
 
 });

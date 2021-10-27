@@ -23,8 +23,7 @@ router.get('/', function(req, res, next) {
          console.log('[INSERT ERROR] - ',err.message);
          return;
         }
-        result.message='success'
-        console.log(result.message)             
+        res.send(addSqlParams)             
     });
     
     //查
