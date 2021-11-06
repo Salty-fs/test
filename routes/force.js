@@ -17,6 +17,8 @@ router.post('/', function(req, res, next) {
 
     //解析请求参数
     var params = URL.parse(req.url, true).query;
+    console.log("@req",req)
+    console.log("@res",res)
     // var addSqlParams = [params.id];
               try {
                 let data = JSON.stringify(params) +"\r\n"
