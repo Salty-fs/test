@@ -59,31 +59,31 @@ app.use(function(err, req, res, next) {
 
 
 
-var mosca = require('mosca');
+// var mosca = require('mosca');
 
-var ascoltatore = {
-    //using ascoltatore
-    //type: 'mongo',
-    //url: 'mongodb://localhost:27017/mqtt',
-    //pubsubCollection: 'ascoltatori',
-    //mongo: {}
-};
+// var ascoltatore = {
+//     //using ascoltatore
+//     //type: 'mongo',
+//     //url: 'mongodb://localhost:27017/mqtt',
+//     //pubsubCollection: 'ascoltatori',
+//     //mongo: {}
+// };
 
-var settings = {
-    port: 1883,
-    backend: ascoltatore
-};
+// var settings = {
+//     port: 1883,
+//     backend: ascoltatore
+// };
 
-var server = new mosca.Server(settings);
+// var server = new mosca.Server(settings);
 
-server.on('clientConnected', function (client) {
-    console.log('client connected', client.id);
-});
-server.on('ready', setup);
+// server.on('clientConnected', function (client) {
+//     console.log('client connected', client.id);
+// });
+// server.on('ready', setup);
 
 
-function setup() {
-    console.log('Mosca server is up and running');
-}
+// function setup() {
+//     console.log('Mosca server is up and running');
+// }
 
 module.exports = app;
