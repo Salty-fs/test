@@ -13,7 +13,7 @@ const fs = require('fs')
  var  sql = 'SELECT * FROM user';
 // var  addSql = 'INSERT INTO user(id,psword) VALUES(?,?)';
 
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
 
     //解析请求参数
     var params = URL.parse(req.url, true).query;
