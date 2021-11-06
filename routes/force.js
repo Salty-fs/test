@@ -16,18 +16,18 @@ const fs = require('fs')
 router.post('/', function(req, res, next) {
 
     //解析请求参数
-    var params = URL.parse(req.url, true).query;
-    console.log("@req",req)
-    console.log("@res",res)
+    // var params = URL.parse(req.url, true).query;
+    console.log("@req",req.body)
+    // console.log("@res",res)
     // var addSqlParams = [params.id];
               try {
-                let data = JSON.stringify(params) +"\r\n"
+                let data = JSON.stringify(req.body) +"\r\n"
                 fs.writeFileSync('./log.txt', data,{ flag: 'a+' }, (err) => {})
                 //file written successfully
               } catch (err) {
                 console.error(err)
               }
-    res.send(params)
+    res.send(req.body)
 
     //解析请求参数
     // var params = URL.parse(req.url, true).query;
