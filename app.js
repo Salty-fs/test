@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var forceRouter = require('./routes/force')
 var search = require('./routes/search');
 var add = require('./routes/add');
 var test = require('./routes/test');
@@ -37,6 +38,7 @@ app.use('/users', usersRouter);
 app.use('/search', search);//查
 app.use('/add', add);//添加
 app.use('/test',test)
+app.use('/force',forceRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -53,5 +55,35 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
+
+var mosca = require('mosca');
+
+var ascoltatore = {
+    //using ascoltatore
+    //type: 'mongo',
+    //url: 'mongodb://localhost:27017/mqtt',
+    //pubsubCollection: 'ascoltatori',
+    //mongo: {}
+};
+
+var settings = {
+    port: 1883,
+    backend: ascoltatore
+};
+
+var server = new mosca.Server(settings);
+
+server.on('clientConnected', function (client) {
+    console.log('client connected', client.id);
+});
+server.on('ready', setup);
+
+
+function setup() {
+    console.log('Mosca server is up and running');
+}
 
 module.exports = app;
