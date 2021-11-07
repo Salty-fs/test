@@ -11,7 +11,7 @@ var connection = mysql.createConnection(config);
 
 //SQL语句
 //  var  sql = 'SELECT * FROM user';
-var  addSql = 'INSERT INTO test(data) VALUES(?)';
+var  addSql = 'INSERT INTO info(devicename,productid,timestamp,timemills,force_of_hx,measure) VALUES(?,?,?,?,?,?)';
 
 router.post('/', function(req, res, next) {
 
@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
       console.error(err)
     }
     // console.log("@res",res)
-    var addSqlParams = [JSON.stringify(req.body)];
+    var addSqlParams = [req.body.devicename,req.body.productid,req.body.timestamp,req.body.timemills,req.body.payload.params.force_of_hx,req.body.payload.params.measure];
 
     connection.query(addSql,addSqlParams,function (err, result) {
         if(err){
