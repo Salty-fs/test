@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
       console.error(err)
     }
     // console.log("@res",res)
-    var addSqlParams = [req.body];
+    var addSqlParams = [JSON.stringify(req.body)];
 
     connection.query(addSql,addSqlParams,function (err, result) {
         if(err){
