@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
 
     //解析请求参数
     // var params = URL.parse(req.url, true).query;
-    console.log("@req",req.body)
+    console.log("@req",req)
     try {
       let data = JSON.stringify(req.body) +"\r\n"
       fs.writeFileSync('./log.txt', data,{ flag: 'a+' }, (err) => {})
