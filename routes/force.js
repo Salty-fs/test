@@ -20,6 +20,9 @@ var connection = mysql.createConnection(config);
 //  var  sql = 'SELECT * FROM user';
 var  addSql = 'INSERT INTO info(devicename,productid,timestamp,timemills,force_of_hx,measure) VALUES(?,?,?,?,?,?)';
 
+var EventEmitter = require('events').EventEmitter
+
+var myevent = new EventEmitter();
 
 router.post('/', function(req, res, next) {
 
@@ -80,4 +83,7 @@ router.post('/', function(req, res, next) {
     console.log("myevent",app)
 });
 
-module.exports = router;
+module.exports = {
+  router,
+  myevent
+};

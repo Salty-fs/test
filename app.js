@@ -12,7 +12,7 @@ var WebSocketServer = require('ws').Server,
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var forceRouter = require('./routes/force')
+var forceRouter = require('./routes/force').router
 var search = require('./routes/search');
 var add = require('./routes/add');
 var test = require('./routes/test');
@@ -67,13 +67,15 @@ app.use(function(err, req, res, next) {
 });
 
 
-var EventEmitter = require('events').EventEmitter
+// var EventEmitter = require('events').EventEmitter
 
-var myevent = new EventEmitter();
+// var myevent = new EventEmitter();
+var myevent = require('./routes/force').myevent
+console.log("sfsrf",myevent)
 
 wss.on('connection', function(ws) {
   console.log('ok')
-  myevent.on('socket',function(data){
+  myevent.on('abc',function(data){
     // console.log('@info',forceRouter.inf)
     ws.send(data)
     console.log('socket发送数据')
