@@ -2,6 +2,13 @@ var express = require('express');
 var router = express.Router();
 var URL = require('url');
 const fs = require('fs')
+
+var app = require('../app')
+
+
+//暴露出服务器收到的机器参数
+var info
+
 // 加载mysql模块
 var mysql = require('mysql');
 
@@ -15,12 +22,17 @@ var  addSql = 'INSERT INTO info(devicename,productid,timestamp,timemills,force_o
 
 router.post('/', function(req, res, next) {
 
+    info = req.body
+
     //解析请求参数
     // var params = URL.parse(req.url, true).query;
     console.log("@req",req)
     try {
       let data = JSON.stringify(req.body) +"\r\n"
       fs.writeFileSync('./log.txt', data,{ flag: 'a+' }, (err) => {})
+
+      //触发事件
+      app.Eevent.emit('socket',data)
       //file written successfully
     } catch (err) {
       console.error(err)
