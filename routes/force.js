@@ -3,7 +3,7 @@ var router = express.Router();
 var URL = require('url');
 const fs = require('fs')
 
-var myevent = require('../app').Eevent
+var app = require('../app')
 
 
 //暴露出服务器收到的机器参数
@@ -77,7 +77,7 @@ router.post('/', function(req, res, next) {
     //    res.send(result);
     // });
 
-    console.log("myevent",myevent)
+    console.log("myevent",app)
 });
 
 module.exports = router;
