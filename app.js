@@ -74,6 +74,7 @@ var Eevent = new EventEmitter();
 wss.on('connection', function(ws) {
   console.log('ok')
   Eevent.on('socket',function(data){
+    // console.log('@info',forceRouter.inf)
     ws.send(data)
     console.log('socket发送数据')
   })
@@ -141,4 +142,7 @@ wss.on('connection', function(ws) {
 //     console.log('Mosca server is up and running');
 // }
 
-module.exports = app;
+module.exports = {
+  app,
+  Eevent
+};

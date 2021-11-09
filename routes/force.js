@@ -3,7 +3,7 @@ var router = express.Router();
 var URL = require('url');
 const fs = require('fs')
 
-var app = require('../app')
+var Eevent = require('../app').Eevent
 
 
 //暴露出服务器收到的机器参数
@@ -20,6 +20,7 @@ var connection = mysql.createConnection(config);
 //  var  sql = 'SELECT * FROM user';
 var  addSql = 'INSERT INTO info(devicename,productid,timestamp,timemills,force_of_hx,measure) VALUES(?,?,?,?,?,?)';
 
+
 router.post('/', function(req, res, next) {
 
     info = req.body
@@ -32,7 +33,7 @@ router.post('/', function(req, res, next) {
       fs.writeFileSync('./log.txt', data,{ flag: 'a+' }, (err) => {})
 
       //触发事件
-      app.Eevent.emit('socket',data)
+      Eevent.emit('socket',data)
       //file written successfully
     } catch (err) {
       console.error(err)
