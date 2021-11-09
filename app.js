@@ -69,11 +69,11 @@ app.use(function(err, req, res, next) {
 
 var EventEmitter = require('events').EventEmitter
 
-var Eevent = new EventEmitter();
+var myevent = new EventEmitter();
 
 wss.on('connection', function(ws) {
   console.log('ok')
-  Eevent.on('socket',function(data){
+  myevent.on('socket',function(data){
     // console.log('@info',forceRouter.inf)
     ws.send(data)
     console.log('socket发送数据')
@@ -82,7 +82,7 @@ wss.on('connection', function(ws) {
   ws.on('close', function () {
     if (clientSpeedUpdater > 0) {
         //断开连接清楚定时器
-        clearInterval(clientSpeedUpdater);
+        // clearInterval(clientSpeedUpdater);
     }
 });
 })
@@ -144,5 +144,5 @@ wss.on('connection', function(ws) {
 
 module.exports = {
   app,
-  Eevent
+  myevent
 };

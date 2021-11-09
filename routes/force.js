@@ -3,7 +3,7 @@ var router = express.Router();
 var URL = require('url');
 const fs = require('fs')
 
-var Eevent = require('../app').Eevent
+var myevent = require('../app').Eevent
 
 
 //暴露出服务器收到的机器参数
@@ -27,13 +27,13 @@ router.post('/', function(req, res, next) {
 
     //解析请求参数
     // var params = URL.parse(req.url, true).query;
-    console.log("@req",req)
+    // console.log("@req",req)
     try {
       let data = JSON.stringify(req.body) +"\r\n"
       fs.writeFileSync('./log.txt', data,{ flag: 'a+' }, (err) => {})
 
       //触发事件
-      Eevent.emit('socket',data)
+      myevent.emit('abc',data)
       //file written successfully
     } catch (err) {
       console.error(err)
@@ -76,6 +76,8 @@ router.post('/', function(req, res, next) {
     //     //把搜索值输出
     //    res.send(result);
     // });
+
+    console.log("myevent",myevent)
 });
 
 module.exports = router;
