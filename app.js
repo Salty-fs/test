@@ -75,17 +75,17 @@ var myevent = require('./routes/force').myevent
 
 wss.on('connection', function(ws) {
   console.log('ok')
-  myevent.on('abc',async function(data){
+  myevent.on('abc',function(data){
     // console.log('@info',forceRouter.inf)
     ws.send(data)
     console.log('socket发送数据')
   })
 
   ws.on('close', function () {
-    if (clientSpeedUpdater > 0) {
-        //断开连接清楚定时器
-        // clearInterval(clientSpeedUpdater);
-    }
+    // if (clientSpeedUpdater > 0) {
+    //     断开连接清楚定时器
+    //     clearInterval(clientSpeedUpdater);
+    // }
 });
 })
 // var ws = require("nodejs-websocket");
