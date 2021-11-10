@@ -71,7 +71,7 @@ app.use(function(err, req, res, next) {
 
 // var myevent = new EventEmitter();
 var myevent = require('./routes/force').myevent
-console.log("sfsrf",myevent)
+// console.log("sfsrf",myevent)
 
 wss.on('connection', function(ws) {
   console.log('ok')

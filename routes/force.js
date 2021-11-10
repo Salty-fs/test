@@ -28,15 +28,22 @@ router.post('/', function(req, res, next) {
 
     info = req.body
 
+
+
+    let data = JSON.stringify(req.body) +"\r\n"
+    
+    //触发事件   
+    try{
+      myevent.emit('abc',data)
+    }catch(err){
+      console.log(err)
+    }
     //解析请求参数
     // var params = URL.parse(req.url, true).query;
     // console.log("@req",req)
-    try {
-      let data = JSON.stringify(req.body) +"\r\n"
+    try { 
       fs.writeFileSync('./log.txt', data,{ flag: 'a+' }, (err) => {})
-
-      //触发事件
-      myevent.emit('abc',data)
+       
       //file written successfully
     } catch (err) {
       console.error(err)
@@ -80,7 +87,7 @@ router.post('/', function(req, res, next) {
     //    res.send(result);
     // });
 
-    console.log("myevent",app)
+    // console.log("myevent",app)
 });
 
 module.exports = {
