@@ -75,7 +75,7 @@ var myevent = require('./routes/force').myevent
 
 wss.on('connection', function(ws) {
   console.log('ok')
-  myevent.on('abc',function(data){
+  myevent.on('abc',async function(data){
     // console.log('@info',forceRouter.inf)
     ws.send(data)
     console.log('socket发送数据')
