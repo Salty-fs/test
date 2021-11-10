@@ -75,7 +75,7 @@ var myevent = require('./routes/force').myevent
 
 wss.on('connection', function(ws) {
   console.log('ok')
-  myevent.on('abc',function(data){
+  myevent.on('abc',async function(data){
     // console.log('@info',forceRouter.inf)
     ws.send(data)
     console.log('socket发送数据')
@@ -86,63 +86,8 @@ wss.on('connection', function(ws) {
     //     断开连接清楚定时器
     //     clearInterval(clientSpeedUpdater);
     // }
-});
+  });
 })
-// var ws = require("nodejs-websocket");
-// var server = ws.createServer(function(conn){
-//     conn.on("text", function (str) {
-//         console.log("收到的信息为:"+str)
-//         if(str==="game1"){
-//             game1 = conn;
-//             game1Ready = true;
-//             conn.sendText("success");
-//         }
-//         if(str==="game2"){
-//             game2 = conn;
-//             game2Ready = true;
-//         }
-
-//         if(game1Ready&&game2Ready){
-//             game2.sendText(str);
-//         }
-
-//         conn.sendText(str)
-//     })
-//     conn.on("close", function (code, reason) {
-//         console.log("关闭连接")
-//     });
-//     conn.on("error", function (code, reason) {
-//         console.log("异常关闭")
-//     });
-// }).listen(8001)
-// console.log("WebSocket建立完毕")
-
-// var mosca = require('mosca');
-
-// var ascoltatore = {
-//     //using ascoltatore
-//     //type: 'mongo',
-//     //url: 'mongodb://localhost:27017/mqtt',
-//     //pubsubCollection: 'ascoltatori',
-//     //mongo: {}
-// };
-
-// var settings = {
-//     port: 1883,
-//     backend: ascoltatore
-// };
-
-// var server = new mosca.Server(settings);
-
-// server.on('clientConnected', function (client) {
-//     console.log('client connected', client.id);
-// });
-// server.on('ready', setup);
-
-
-// function setup() {
-//     console.log('Mosca server is up and running');
-// }
 
 module.exports = {
   app,
